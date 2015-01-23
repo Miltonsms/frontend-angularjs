@@ -1,4 +1,22 @@
-<!--
-Usa este archivo para tu proyecto. No olvides hacer
-la estructura correta y guardar TODO tu CSS en el archivo styles.css
- -->
+
+<!DOCTYPE  html>
+<!--ng-app hace referencia al nombre de nuestro modulo-->
+<html lang="es" ng-app="app">
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <!--añadimos aquí el controlador appController ya que será donde mostremos los datos-->
+        <div class="row" ng-controller="appController">
+            <h1 class="subheader">Consumir un json con $http en AngularJS</h1>
+            <ul class="panel callout radius">
+                <li ng-repeat="data in datos">
+                    <p>Id: {{ data.name }}</p>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="js/angular.js"></script>
+        <script type="text/javascript" src="js/angular_resource.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+    </body>
+</html>
