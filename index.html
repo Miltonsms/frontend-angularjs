@@ -1,22 +1,144 @@
+<!Doctype HTML>
+<!--
+Usa este archivo para tu proyecto. No olvides hacer
+la estructura correta y guardar TODO tu CSS en el archivo styles.css
+ -->
+<html>
+	<head>
+		<title>AngularJS Frontend</title>
+		<!--Bootstrap Files-->
+		<link rel = "stylesheet" type = "text/css" href="bootstrap/css/bootstrap.css">
+		<!-- CSS File -->
+		<link rel = "stylesheet" type = "text/css" href="css/styles.css">		
+	</head>
+	<body  ng-app="AngularProject">
 
-<!DOCTYPE  html>
-<!--ng-app hace referencia al nombre de nuestro modulo-->
-<html lang="es" ng-app="app">
-    <head>
-        <meta charset="UTF-8" />
-    </head>
-    <body>
-        <!--añadimos aquí el controlador appController ya que será donde mostremos los datos-->
-        <div class="row" ng-controller="appController">
-            <h1 class="subheader">Consumir un json con $http en AngularJS</h1>
-            <ul class="panel callout radius">
-                <li ng-repeat="data in datos">
-                    <p>Id: {{ data.name }}</p>
-                </li>
-            </ul>
-        </div>
-        <script type="text/javascript" src="js/angular.js"></script>
-        <script type="text/javascript" src="js/angular_resource.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
-    </body>
+
+<!--Navbar Top-->
+	<nav class="navbar navbar-inverse" role="navigation">
+  	 <div class="container-fluid">
+     <div class="row">
+     <div class="col-md-1">
+     	
+       </div> <!-- cierre de col-2-->
+       <div class="col-md-8">
+       <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+       <a class="navbar-brand" href="#" data-bind='click: sortByViews'>Los menos vistos</a>
+       <a class="navbar-brand" href="#" data-bind='click: sortByLestViews' >Los mas vistos</a>
+       <a class="navbar-brand" href="#" data-bind='click: sortByName'>Videos  a-z</a>
+       <a class="navbar-brand" href="#" data-bind='click: sortByName_z_a'>Videos z-a</a>
+       <a class="navbar-brand" href="#" data-bind='click: sortByComments'>Menos comentados</a>
+       <a class="navbar-brand" href="#" data-bind='click: sortByLestComments'>Mas comentados</a>
+       </div>
+       </div><!--cierre de col-8-->
+       <div class="col-md-3">
+       	<!-- Large modal -->
+	  		<form class="navbar-form navbar-right" role="search">
+	        	<div class="form-group">
+	          		<input type="text" class="form-control" placeholder ="Search" ng-model="buscar">
+	        	</div>
+	        	<button type="button" class="btn btn-primary navbar-right botonSearch" data-toggle="modal" data-target=".bs-example-modal-lg">Submit</button>
+	     	 </form>
+			<div class="modal fade bs-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<div class="modal-content">
+					</div>
+				</div>
+			</div>
+       </div> <!--cierre de col3-->
+       </div>
+     </div><!--Close of Navbar Header-->
+    <!--Start the toggle-->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="pull-right dropdown">
+        </li><!--Close of pull-right-->
+      </ul><!--Close of navbar with toogle inside-->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav><!--Close of Navbar-->
+<!--Close of Navbar Top-->
+
+
+
+<div class="container up">
+	<div class="row">
+			<div class="container">
+		<div class="jumbotron  alert alert-info" >
+    			<h1>  Music angular  </h1>
+		</div>
+		<div  class "container" ng-controller="SearchController">	
+
+	 		<div class="panel-body">
+	 				<table class="table table-striped">	
+					<thead class = "titulos">		
+						<tr>
+							<th></th>
+							<th>
+								<a href="" ng-click="orderBy('name')">	
+		 							Name </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('-name')"></span>
+							</th>
+							
+							<th>
+								<a href="" ng-click="orderBy('artist.name')">	
+		 							Artist </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('-artist.name')"></span></th>
+		 					<th>
+		 						<a href="" ng-click="orderBy('-playcount')">	
+		 							Play Counts </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('playcount')"></span></th>
+		 						</th>
+		 					<th>
+		 						<a href="" ng-click="orderBy('-listeners')">	
+		 							Listeners </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('listeners')"></span>
+		 						</th>
+		 					<th>
+		 						<a href="" ng-click="orderBy('-duration')">	
+		 							Duration </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('duration')"></span>
+		 						</th>
+	 					</tr>
+					</thead>
+					<tbody ng-repeat="nombre in phones | orderBy:orderSelect | filter : buscar ">
+						<tr>
+							<td ng-show="{{nombre.image[1]}}"><img ng-src="{{nombre.image[1] | pictureSong}}"></td>
+							<td ng-show="!{{nombre.image[1]}}"><img src="http://g.cdn.ecn.cl/musica-pop/files/2012/04/logo-prince.jpg" height="40px"></td>
+							<td>{{nombre.name}}</td>
+							<td>{{nombre.artist.name}}</td>		
+							<td>{{nombre.playcount}}</td>
+							<td>{{nombre.listeners}}
+							<td>{{nombre.duration*1000 | date: 'mm:ss'}}</td>							
+						</tr>
+					</tbody>		
+				</table>
+			</div>
+		</div>	
+		</div>	
+
+
+
+
+
+
+
+
+  	</div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+ <div class="container">
+  <p class="navbar-text pull-left">Site Built By: Milton </p>
+  <a href="https://github.com/Miltonsms" target="blank" class="navbar-btn btn-danger btn pull-right">Look my Github</a>
+ </div><!--container-->
+</div><!--navbar fixed bottom-->
+
+
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
 </html>
