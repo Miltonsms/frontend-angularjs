@@ -9,27 +9,28 @@ la estructura correta y guardar TODO tu CSS en el archivo styles.css
 		<!--Bootstrap Files-->
 		<link rel = "stylesheet" type = "text/css" href="bootstrap/css/bootstrap.css">
 		<!-- CSS File -->
-		<link rel = "stylesheet" type = "text/css" href="css/styles.css">		
+		<link rel = "stylesheet" type = "text/css" href="css/styles.css">
 	</head>
 	<body  ng-app="AngularProject">
 
 
 <!--Navbar Top-->
+        <div>
 	<nav class="navbar navbar-inverse" role="navigation">
   	 <div class="container-fluid">
      <div class="row">
      <div class="col-md-1">
      	
        </div> <!-- cierre de col-2-->
-       <div class="col-md-8">
+       <div class="col-md-8" >
        <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-       <a class="navbar-brand" href="#" data-bind='click: sortByViews'>Los menos vistos</a>
-       <a class="navbar-brand" href="#" data-bind='click: sortByLestViews' >Los mas vistos</a>
-       <a class="navbar-brand" href="#" data-bind='click: sortByName'>Videos  a-z</a>
-       <a class="navbar-brand" href="#" data-bind='click: sortByName_z_a'>Videos z-a</a>
-       <a class="navbar-brand" href="#" data-bind='click: sortByComments'>Menos comentados</a>
-       <a class="navbar-brand" href="#" data-bind='click: sortByLestComments'>Mas comentados</a>
+      <div class="navbar-header" >
+       <a class="navbar-brand" href="#" >Los menos vistos</a>
+       <a class="navbar-brand" href="#" >Los mas vistos</a>
+       <a class="navbar-brand" href="#" >Videos  a-z</a>
+       <a class="navbar-brand" href="#" >Videos z-a</a>
+       <a class="navbar-brand" href="#" >Menos comentados</a>
+       <a class="navbar-brand" href="#" >Mas comentados</a>
        </div>
        </div><!--cierre de col-8-->
        <div class="col-md-3">
@@ -69,9 +70,10 @@ la estructura correta y guardar TODO tu CSS en el archivo styles.css
 		<div class="jumbotron  alert alert-info" >
     			<h1>  Music angular  </h1>
 		</div>
-		<div  class "container" ng-controller="SearchController">	
+		<div  class ="container" ng-controller="SearchController">	
 
 	 		<div class="panel-body">
+                <div class="table-responsive scrollVertical">
 	 				<table class="table table-striped">	
 					<thead class = "titulos">		
 						<tr>
@@ -90,7 +92,6 @@ la estructura correta y guardar TODO tu CSS en el archivo styles.css
 		 						<a href="" ng-click="orderBy('-playcount')">	
 		 							Play Counts </a>
 		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('playcount')"></span></th>
-		 						</th>
 		 					<th>
 		 						<a href="" ng-click="orderBy('-listeners')">	
 		 							Listeners </a>
@@ -103,7 +104,9 @@ la estructura correta y guardar TODO tu CSS en el archivo styles.css
 		 						</th>
 	 					</tr>
 					</thead>
+                      
 					<tbody ng-repeat="nombre in phones | orderBy:orderSelect | filter : buscar ">
+
 						<tr>
 							<td ng-show="{{nombre.image[1]}}"><img ng-src="{{nombre.image[1] | pictureSong}}"></td>
 							<td ng-show="!{{nombre.image[1]}}"><img src="http://g.cdn.ecn.cl/musica-pop/files/2012/04/logo-prince.jpg" height="40px"></td>
@@ -115,20 +118,16 @@ la estructura correta y guardar TODO tu CSS en el archivo styles.css
 						</tr>
 					</tbody>		
 				</table>
+                </div>
 			</div>
 		</div>	
 		</div>	
-
-
-
-
-
-
-
-
   	</div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
 <div class="navbar navbar-inverse navbar-fixed-bottom">
  <div class="container">
   <p class="navbar-text pull-left">Site Built By: Milton </p>
@@ -137,8 +136,12 @@ la estructura correta y guardar TODO tu CSS en el archivo styles.css
 </div><!--navbar fixed bottom-->
 
 
-
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
+		<!--jasmine-->
+		<script type="text/javascript" src="js/lib/jasmine-2.1.3/console.jsconsole.js"></script>
+				<script type="text/javascript" src="js/lib/jasmine-2.1.3/jasmine.js"></script>
+
+
 	</body>
 </html>

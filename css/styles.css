@@ -1,0 +1,8 @@
+.scrollVertical{
+/* Scroll Bar Vertical en la tabla del JSON */
+display: block;
+  height: calc(60vh - 1px);
+  min-height: calc(200px + 1 px);
+  /*use calc for fixed ie9 & <*/
+  overflow-Y: scroll;
+  }
